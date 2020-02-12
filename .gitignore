@@ -1,0 +1,7 @@
+*.iml
+*.swp
+.gradle/
+.DS_Store
+build/
+out/
+projectFilesBackup/
