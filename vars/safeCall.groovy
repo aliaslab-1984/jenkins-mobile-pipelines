@@ -71,6 +71,8 @@ Status: :tada: *Succeded* :tada:
 Node: ${computerIcon} ${NODE_NAME}
 More info: <${BUILD_URL}|here>
      """;
+      
+      return 0
    }
    catch (Exception | AssertionError exc) {
      slackSend color: '#ff0000',
@@ -84,5 +86,7 @@ Node: ${computerIcon} ${NODE_NAME}
 See: <${BUILD_URL}|here>
 Additional Info: `${exc.message}`
      """;
+      
+      return 400
    }
 }
