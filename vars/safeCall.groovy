@@ -1,11 +1,12 @@
 def call(Closure closure) {
-   
-   def threads = [":one:", 
+
+   // I define a series of emojis icon names to provide to the thread.
+   def threads = [":one:",
               ":two:",
               ":three:",
               ":four:",
               ":five:",
-              ":six:", 
+              ":six:",
               ":seven:",
               ":eight:",
               ":nine:",
@@ -25,36 +26,40 @@ def call(Closure closure) {
 
    Random random = new Random()
    def randomIndex = random.nextInt(threads.size() - 1)
+   // Pick a random one.
    def extracted = threads[randomIndex]
+   // Split the lists tokens into separate variables.
    def lista = env.JOB_NAME.tokenize('/')
-   
+
    def project = lista[lista.size() - 2]
    def testTarget = lista[lista.size() - 1]
    def platform = lista[lista.size() - 3]
-   
+
+   // Provide a nicer icon to the platform tested.
    if (platform.toLowerCase().contains("iOS".toLowerCase())) {
       platform += " :green_apple:"
    } else {
       platform += " :robot_face:"
    }
-   
+
    def computerIcon = ""
-   
+   // Same as before for the machin used for the testing.
    if (NODE_NAME.toLowerCase().contains("mac mini")) {
       computerIcon = ":desktop_computer:"
    } else {
       computerIcon = ":computer:"
    }
-   
+
+   // handle the exception thrown by the closure
    try {
-      
+
      slackSend color: '#ffff00',
         message: """
 Thread: ${extracted}
 Platform: ${platform}
 Project: *${project}* --> _${testTarget}_
 Build: #${env.BUILD_NUMBER}
-Status: *Started* 
+Status: *Started*
 Node: ${computerIcon} ${NODE_NAME}
 More info: <${BUILD_URL}|here>
      """;
@@ -67,11 +72,11 @@ Thread: ${extracted}
 Platform: ${platform}
 Project: *${project}* --> _${testTarget}_
 Build: #${env.BUILD_NUMBER}
-Status: :tada: *Succeded* :tada: 
+Status: :tada: *Succeded* :tada:
 Node: ${computerIcon} ${NODE_NAME}
 More info: <${BUILD_URL}|here>
      """;
-      
+
       return 0
    }
    catch (Exception | AssertionError exc) {
@@ -86,7 +91,7 @@ Node: ${computerIcon} ${NODE_NAME}
 See: <${BUILD_URL}|here>
 Additional Info: `${exc.message}`
      """;
-      
+
       return 400
    }
 }
