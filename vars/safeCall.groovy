@@ -30,11 +30,19 @@ def call(Closure closure) {
    
    def project = lista[lista.size() - 2]
    def testTarget = lista[lista.size() - 1]
+   def platform = lista[lista.size() - 3]
+   
+   if platform == "iOS" {
+      platform += " :green_apple"
+   } else {
+      platform += " :robot_face:"
+   }
+   
    try {
       
      slackSend color: '#ffff00', message: """
-     ${extracted} *${project}*:
-     ${testTarget}
+     Platform: ${platform}
+     Project: ${extracted} *${project}* --> ${testTarget}
      Build: #${env.BUILD_NUMBER}
      Status: *Started* on :computer: ${NODE_NAME}
      See: <${BUILD_URL}|here>
@@ -43,8 +51,8 @@ def call(Closure closure) {
      closure();
 
      slackSend color: 'good', message: """
-     ${extracted} *${project}*:
-     ${testTarget}
+     Platform: ${platform}
+     Project: ${extracted} *${project}* --> ${testTarget}
      Build: #${env.BUILD_NUMBER}
      Status: :tada: *Succeded* :tada: on ${NODE_NAME}
      See: <${BUILD_URL}|here>
@@ -52,8 +60,8 @@ def call(Closure closure) {
    }
    catch (Exception | AssertionError exc) {
      slackSend color: '#ff0000', message: """
-     ${extracted} *${project}*:
-     ${testTarget}
+     Platform: ${platform}
+     Project: ${extracted} *${project}* --> ${testTarget}
      Build: #${env.BUILD_NUMBER}
      Status: :boom: *Failed* on ${NODE_NAME}
      See: <${BUILD_URL}|here>
