@@ -32,8 +32,8 @@ def call(Closure closure) {
    def testTarget = lista[lista.size() - 1]
    def platform = lista[lista.size() - 3]
    
-   if platform == "iOS" {
-      platform += " :green_apple"
+   if (platform.contains("iOS")) {
+      platform += " :green_apple:"
    } else {
       platform += " :robot_face:"
    }
