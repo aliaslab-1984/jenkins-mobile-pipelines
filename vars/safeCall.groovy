@@ -1,15 +1,15 @@
 def call(Closure closure) {
    
-   def threads = [":large_green_circle:", 
-              ":large_yellow_circle:",
-              ":large_purple_circle:",
-              ":large_brown_circle:",
-              ":large_orange_circle:",
-              ":large_green_square:", 
-              ":large_yellow_square:",
-              ":large_purple_square:",
-              ":large_brown_square:",
-              ":large_orange_square:",
+   def threads = [":one:", 
+              ":two:",
+              ":three:",
+              ":four:",
+              ":five:",
+              ":six:", 
+              ":seven:",
+              ":eight:",
+              ":nine:",
+              ":keycap_ten:",
               ]
 
    Random random = new Random()
