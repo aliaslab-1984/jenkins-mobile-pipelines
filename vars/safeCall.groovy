@@ -41,8 +41,9 @@ def call(Closure closure) {
    try {
       
      slackSend color: '#ffff00', message: """
+     Thread: ${extracted}
      Platform: ${platform}
-     Project: ${extracted} *${project}* --> ${testTarget}
+     Project: *${project}* --> ${testTarget}
      Build: #${env.BUILD_NUMBER}
      Status: *Started* on :computer: ${NODE_NAME}
      See: <${BUILD_URL}|here>
@@ -51,8 +52,9 @@ def call(Closure closure) {
      closure();
 
      slackSend color: 'good', message: """
+     Thread: ${extracted}
      Platform: ${platform}
-     Project: ${extracted} *${project}* --> ${testTarget}
+     Project: *${project}* --> ${testTarget}
      Build: #${env.BUILD_NUMBER}
      Status: :tada: *Succeded* :tada: on ${NODE_NAME}
      See: <${BUILD_URL}|here>
@@ -60,8 +62,9 @@ def call(Closure closure) {
    }
    catch (Exception | AssertionError exc) {
      slackSend color: '#ff0000', message: """
+     Thread: ${extracted}
      Platform: ${platform}
-     Project: ${extracted} *${project}* --> ${testTarget}
+     Project: *${project}* --> ${testTarget}
      Build: #${env.BUILD_NUMBER}
      Status: :boom: *Failed* on ${NODE_NAME}
      See: <${BUILD_URL}|here>
