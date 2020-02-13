@@ -26,10 +26,15 @@ def call(Closure closure) {
    Random random = new Random()
    def randomIndex = random.nextInt(threads.size() - 1)
    def extracted = threads[randomIndex]
+   def lista = env.JOB_NAME.tokenize('/')
    
+   def project = lista[lista.size() - 2]
+   def testTarget = lista[lista.size() - 1]
    try {
+      
      slackSend color: '#ffff00', message: """
-     ${extracted} ${env.JOB_NAME}
+     ${extracted} *${project}*:
+     ${testTarget}
      Build: #${env.BUILD_NUMBER}
      Status: *Started* on :computer: ${NODE_NAME}
      See: <${BUILD_URL}|here>
@@ -38,7 +43,8 @@ def call(Closure closure) {
      closure();
 
      slackSend color: 'good', message: """
-     ${extracted} ${env.JOB_NAME}
+     ${extracted} *${project}*:
+     ${testTarget}
      Build: #${env.BUILD_NUMBER}
      Status: :tada: *Succeded* :tada: on ${NODE_NAME}
      See: <${BUILD_URL}|here>
@@ -46,7 +52,8 @@ def call(Closure closure) {
    }
    catch (Exception | AssertionError exc) {
      slackSend color: '#ff0000', message: """
-     ${extracted} ${env.JOB_NAME}
+     ${extracted} *${project}*:
+     ${testTarget}
      Build: #${env.BUILD_NUMBER}
      Status: :boom: *Failed* on ${NODE_NAME}
      See: <${BUILD_URL}|here>
