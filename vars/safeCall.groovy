@@ -38,37 +38,51 @@ def call(Closure closure) {
       platform += " :robot_face:"
    }
    
+   def computerIcon = ""
+   
+   if (NODE_NAME.toLowerCase().contains("mac mini")) {
+      computerIcon = ":desktop_computer:"
+   } else {
+      computerIcon = ":computer:"
+   }
+   
    try {
       
-     slackSend color: '#ffff00', message: """
-     Thread: ${extracted}
-     Platform: ${platform}
-     Project: *${project}* --> ${testTarget}
-     Build: #${env.BUILD_NUMBER}
-     Status: *Started* on :computer: ${NODE_NAME}
-     See: <${BUILD_URL}|here>
+     slackSend color: '#ffff00',
+        message: """
+Thread: ${extracted}
+Platform: ${platform}
+Project: *${project}* --> _${testTarget}_
+Build: #${env.BUILD_NUMBER}
+Status: *Started* 
+Node: ${computerIcon} ${NODE_NAME}
+More info: <${BUILD_URL}|here>
      """;
 
      closure();
 
-     slackSend color: 'good', message: """
-     Thread: ${extracted}
-     Platform: ${platform}
-     Project: *${project}* --> ${testTarget}
-     Build: #${env.BUILD_NUMBER}
-     Status: :tada: *Succeded* :tada: on ${NODE_NAME}
-     See: <${BUILD_URL}|here>
+     slackSend color: 'good',
+        message: """
+Thread: ${extracted}
+Platform: ${platform}
+Project: *${project}* --> _${testTarget}_
+Build: #${env.BUILD_NUMBER}
+Status: :tada: *Succeded* :tada: 
+Node: ${computerIcon} ${NODE_NAME}
+More info: <${BUILD_URL}|here>
      """;
    }
    catch (Exception | AssertionError exc) {
-     slackSend color: '#ff0000', message: """
-     Thread: ${extracted}
-     Platform: ${platform}
-     Project: *${project}* --> ${testTarget}
-     Build: #${env.BUILD_NUMBER}
-     Status: :boom: *Failed* on ${NODE_NAME}
-     See: <${BUILD_URL}|here>
-     Additional Info: `${exc.message}`
+     slackSend color: '#ff0000',
+        message: """
+Thread: ${extracted}
+Platform: ${platform}
+Project: *${project}* --> _${testTarget}_
+Build: #${env.BUILD_NUMBER}
+Status: :boom: *Failed*
+Node: ${computerIcon} ${NODE_NAME}
+See: <${BUILD_URL}|here>
+Additional Info: `${exc.message}`
      """;
    }
 }
