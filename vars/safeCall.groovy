@@ -20,7 +20,7 @@ def call(Closure closure) {
      slackSend color: '#ff0000', message: """
      ${env.JOB_NAME}
      Build: #${env.BUILD_NUMBER}
-     Status: :firecracker: *Failed* :boom: on ${NODE_NAME}
+     Status: :boom: *Failed* on ${NODE_NAME}
      See: <${BUILD_URL}|here>
      Additional Info: `${exc.message}`
      """;
