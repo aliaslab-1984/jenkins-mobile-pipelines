@@ -3,7 +3,7 @@ def call(Closure closure) {
      slackSend color: '#ffff00', message: """
      ${env.JOB_NAME}
      Build: #${env.BUILD_NUMBER}
-     Status: :calling: *Started* on ${NODE_NAME}
+     Status: *Started* on :computer: ${NODE_NAME}
      See: <${BUILD_URL}|here>
      """;
 
@@ -12,7 +12,7 @@ def call(Closure closure) {
      slackSend color: 'good', message: """
      ${env.JOB_NAME}
      Build: #${env.BUILD_NUMBER}
-     Status: :white_check_mark: *Succeded* on ${NODE_NAME}
+     Status: :tada: *Succeded* :tada: on ${NODE_NAME}
      See: <${BUILD_URL}|here>
      """;
    }
