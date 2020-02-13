@@ -10,6 +10,17 @@ def call(Closure closure) {
               ":eight:",
               ":nine:",
               ":keycap_ten:",
+               ":dog:",
+               ":dog2:",
+               ":hotdog:",
+               ":doughnut",
+               ":cat:",
+               ":cat2:",
+               ":candy:",
+               ":cactus:",
+               ":camel:",
+               ":poop:",
+               ":poodle:"
               ]
 
    Random random = new Random()
