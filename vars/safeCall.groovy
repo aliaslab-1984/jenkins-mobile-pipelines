@@ -48,8 +48,7 @@ def call(Closure closure) {
    
    try {
       
-     slackSend color: '#ffff00', 
-        icon_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Apple_logo_dark_grey.svg/98px-Apple_logo_dark_grey.svg.png",
+     slackSend color: '#ffff00',
         message: """
 Thread: ${extracted}
 Platform: ${platform}
