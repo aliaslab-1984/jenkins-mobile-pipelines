@@ -22,7 +22,7 @@ def call(Closure closure) {
      Build: #${env.BUILD_NUMBER}
      Status: :firecracker: *Failed* :boom: on ${NODE_NAME}
      See: <${BUILD_URL}|here>
-     Additional Info: ${exc.message}
+     Additional Info: `${exc.message}`
      """;
    }
 }
