@@ -80,18 +80,35 @@ More info: <${BUILD_URL}|here>
       return 0
    }
    catch (Exception | AssertionError exc) {
-     slackSend color: '#ff0000',
-        message: """
-Thread: ${extracted}
-Platform: ${platform}
-Project: *${project}* --> _${testTarget}_
-Build: #${env.BUILD_NUMBER}
-Status: :boom: *Failed*
-Node: ${computerIcon} ${NODE_NAME}
-See: <${BUILD_URL}|here>
-Additional Info: `${exc.message}`
-     """;
+     // I'm checking if the current build was interrupted or not
+     if (exc instanceof InterruptedException) {
 
-      return 400
+        slackSend color: '#ff0000',
+           message: """
+   Thread: ${extracted}
+   Platform: ${platform}
+   Project: *${project}* --> _${testTarget}_
+   Build: #${env.BUILD_NUMBER}
+   Status: :stopwatch: *Interrupted*
+   Node: ${computerIcon} ${NODE_NAME}
+   See: <${BUILD_URL}|here>
+        """;
+
+         return 0
+    } else {
+      slackSend color: '#ff0000',
+         message: """
+ Thread: ${extracted}
+ Platform: ${platform}
+ Project: *${project}* --> _${testTarget}_
+ Build: #${env.BUILD_NUMBER}
+ Status: :boom: *Failed*
+ Node: ${computerIcon} ${NODE_NAME}
+ See: <${BUILD_URL}|here>
+ Additional Info: `${exc.message}`
+      """;
+
+       return 400
+    }
    }
 }
