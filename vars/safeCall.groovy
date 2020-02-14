@@ -53,7 +53,7 @@ def call(Closure closure) {
    // handle the exception thrown by the closure
    try {
 
-     slackSend color: '#ffff00',
+     slackSend color: '#0078ff',
         message: """
 Thread: ${extracted}
 Platform: ${platform}
@@ -83,7 +83,7 @@ More info: <${BUILD_URL}|here>
      // I'm checking if the current build was interrupted or not
      if (exc instanceof InterruptedException) {
 
-        slackSend color: '#ff0000',
+        slackSend color: '#ffa700',
            message: """
    Thread: ${extracted}
    Platform: ${platform}
