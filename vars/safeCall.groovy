@@ -14,7 +14,7 @@ def call(Closure closure) {
                ":dog:",
                ":dog2:",
                ":hotdog:",
-               ":doughnut",
+               ":doughnut:",
                ":cat:",
                ":cat2:",
                ":candy:",
