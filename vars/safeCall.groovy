@@ -72,6 +72,7 @@ Thread: ${extracted}
 Platform: ${platform}
 Project: *${project}* --> _${testTarget}_
 Build: #${env.BUILD_NUMBER}
+Branch: #${env.BRANCH_NAME}
 Status: :tada: *Succeded* :tada:
 Node: ${computerIcon} ${NODE_NAME}
 More info: <${BUILD_URL}|here>
@@ -89,6 +90,7 @@ More info: <${BUILD_URL}|here>
    Platform: ${platform}
    Project: *${project}* --> _${testTarget}_
    Build: #${env.BUILD_NUMBER}
+   Branch: #${env.BRANCH_NAME}
    Status: :stopwatch: *Interrupted*
    Node: ${computerIcon} ${NODE_NAME}
    See: <${BUILD_URL}|here>
@@ -102,6 +104,7 @@ More info: <${BUILD_URL}|here>
  Platform: ${platform}
  Project: *${project}* --> _${testTarget}_
  Build: #${env.BUILD_NUMBER}
+ Branch: #${env.BRANCH_NAME}
  Status: :boom: *Failed*
  Node: ${computerIcon} ${NODE_NAME}
  See: <${BUILD_URL}|here>
