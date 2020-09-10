@@ -58,8 +58,7 @@ def call(Closure closure) {
 Thread: ${extracted}
 Platform: ${platform}
 Project: *${project}* --> _${testTarget}_
-Build: #${env.ALBRANCH}
-Branch: ${env.JOB_NAME}
+Build: #${env.BUILD_NUMBER}
 Status: :rocket: *Started*
 Node: ${computerIcon} ${NODE_NAME}
 More info: <${BUILD_URL}|here>
@@ -73,7 +72,6 @@ Thread: ${extracted}
 Platform: ${platform}
 Project: *${project}* --> _${testTarget}_
 Build: #${env.BUILD_NUMBER}
-Branch: ${env.GIT_BRANCH}
 Status: :tada: *Succeded* :tada:
 Node: ${computerIcon} ${NODE_NAME}
 More info: <${BUILD_URL}|here>
@@ -91,7 +89,6 @@ More info: <${BUILD_URL}|here>
    Platform: ${platform}
    Project: *${project}* --> _${testTarget}_
    Build: #${env.BUILD_NUMBER}
-   Branch: ${env.GIT_LOCAL_BRANCH}
    Status: :stopwatch: *Interrupted*
    Node: ${computerIcon} ${NODE_NAME}
    See: <${BUILD_URL}|here>
@@ -105,7 +102,6 @@ More info: <${BUILD_URL}|here>
  Platform: ${platform}
  Project: *${project}* --> _${testTarget}_
  Build: #${env.BUILD_NUMBER}
- Branch: ${env.BRANCH_NAME}
  Status: :boom: *Failed*
  Node: ${computerIcon} ${NODE_NAME}
  See: <${BUILD_URL}|here>
