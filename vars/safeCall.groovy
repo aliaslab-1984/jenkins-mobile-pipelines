@@ -58,7 +58,7 @@ def call(Closure closure) {
 Thread: ${extracted}
 Platform: ${platform}
 Project: *${project}* --> _${testTarget}_
-Build: #${env.BUILD_NUMBER}
+Build: #${env.ALBRANCH}
 Branch: ${env.JOB_NAME}
 Status: :rocket: *Started*
 Node: ${computerIcon} ${NODE_NAME}
