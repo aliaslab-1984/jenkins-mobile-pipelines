@@ -59,7 +59,7 @@ Thread: ${extracted}
 Platform: ${platform}
 Project: *${project}* --> _${testTarget}_
 Build: #${env.BUILD_NUMBER}
-Branch: ${GIT_BRANCH}
+Branch: ${env.JOB_NAME}
 Status: :rocket: *Started*
 Node: ${computerIcon} ${NODE_NAME}
 More info: <${BUILD_URL}|here>
