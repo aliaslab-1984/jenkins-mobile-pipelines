@@ -30,6 +30,7 @@ def call(Closure closure) {
    def extracted = threads[randomIndex]
    // Split the lists tokens into separate variables.
    def lista = env.JOB_NAME.tokenize('/')
+   def branch = env.gitBranch
 
    def project = lista[lista.size() - 2]
    def testTarget = lista[lista.size() - 1]
@@ -59,6 +60,7 @@ Thread: ${extracted}
 Platform: ${platform}
 Project: *${project}* --> _${testTarget}_
 Build: #${env.BUILD_NUMBER}
+Branch: ${branch}
 Status: :rocket: *Started*
 Node: ${computerIcon} ${NODE_NAME}
 More info: <${BUILD_URL}|here>
@@ -72,6 +74,7 @@ Thread: ${extracted}
 Platform: ${platform}
 Project: *${project}* --> _${testTarget}_
 Build: #${env.BUILD_NUMBER}
+Branch: ${branch}
 Status: :tada: *Succeded* :tada:
 Node: ${computerIcon} ${NODE_NAME}
 More info: <${BUILD_URL}|here>
@@ -89,6 +92,7 @@ More info: <${BUILD_URL}|here>
    Platform: ${platform}
    Project: *${project}* --> _${testTarget}_
    Build: #${env.BUILD_NUMBER}
+   Branch: ${branch}
    Status: :stopwatch: *Interrupted*
    Node: ${computerIcon} ${NODE_NAME}
    See: <${BUILD_URL}|here>
