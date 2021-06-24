@@ -30,7 +30,7 @@ def call(Closure closure) {
    def extracted = threads[randomIndex]
    // Split the lists tokens into separate variables.
    def lista = env.JOB_NAME.tokenize('/')
-   def branch = lista
+   def branch = env
 
    def project = lista[lista.size() - 2]
    def testTarget = lista[lista.size() - 1]
